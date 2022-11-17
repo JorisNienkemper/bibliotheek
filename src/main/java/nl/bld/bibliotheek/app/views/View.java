@@ -1,20 +1,25 @@
 package nl.bld.bibliotheek.app.views;
 
-import org.example.domain.Book;
+
+import nl.bld.bibliotheek.app.domain.Book;
 
 import java.util.List;
 
 public class View {
 
     public void showOptionsLoanController() {
-        System.out.println("Please choose one of the options below:");
-        System.out.println("Option 1: Search Book");
-        System.out.println("Option 2: Show All Books");
-        System.out.println("Option 3: Check Out Book");
-        System.out.println("Option 4: Check In Book");
-        System.out.println("Option 5: Administrator");
-        System.out.println("Option 0: Exit Application");
-        System.out.printf("Enter your number:\t");
+        System.out.println("""
+                -------------------------------------------
+                | Please choose one of the options below: |
+                |                                         |
+                | Option 1: Show All Books                |
+                | Option 2: Check Out Book                |
+                | Option 3: Check In Book                 |
+                | Option 4: Administrator menu            |
+                | Option 0: Exit Application              |
+                -------------------------------------------
+                Enter your number:
+                """);
     }
 
     public void printLibrary(List<Book> books) {

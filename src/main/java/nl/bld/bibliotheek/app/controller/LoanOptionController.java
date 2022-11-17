@@ -1,7 +1,7 @@
 package nl.bld.bibliotheek.app.controller;
 
-import org.example.domain.Book;
-import org.example.views.View;
+import nl.bld.bibliotheek.app.domain.Book;
+import nl.bld.bibliotheek.app.views.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class LoanOptionController {
     Scanner scanner = new Scanner(System.in);
     View view = new View();
+
 
     public void switchMenu() {
 
@@ -46,7 +47,7 @@ public class LoanOptionController {
 
     public void showDatabase() {
         List<Book> books = getBooks();
-        dh.printLibrary(books);
+        view.printLibrary(books);
     }
 
     public void checkOutBook() {

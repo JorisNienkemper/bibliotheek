@@ -2,8 +2,6 @@ package nl.bld.bibliotheek.app.testDao;
 
 import nl.bld.bibliotheek.app.daos.BookDaoServiceContract;
 import nl.bld.bibliotheek.app.domain.Book;
-import org.example.daos.BookDaoServiceContract;
-import org.example.domain.Book;
 
 import java.util.ArrayList;
 import java.util.List;
