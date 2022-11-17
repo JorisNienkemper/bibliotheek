@@ -19,9 +19,9 @@
  */
 package nl.bld.bibliotheek.app.daos;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.HashSet;
 import java.util.List;
@@ -30,65 +30,77 @@ import java.util.Set;
 import nl.bld.bibliotheek.app.domain.Book;
 import nl.bld.bibliotheek.app.domain.Member;
 
+import jakarta.persistence.NoResultException;
+
 /**
  * TODO: ebben00: beschrijf deze klasse !
  *
  * @author ebben00
  */
 public class MemberDaoServiceTests {
-//	@Test
-//	public void saveAndFindMemberTest() {
-//		Book book = new Book("Jack Kerouac", "On the Road");
-//		Set<Book> bookSet = new HashSet<>();
-//		bookSet.add(book);
-//		Member member1 = new Member("Niels", bookSet);
-//		MemberDaoService memberDaoService = new MemberDaoService();
-//
-//		memberDaoService.tempSaveBooks(bookSet);		//TODO vervangen door BookDaoService
-//		memberDaoService.save(member1);
-//		List<Member> members = memberDaoService.getMemberByUserName("Niels");
-//		Member member2 = members.get(0);
-//
-//		System.out.println("Username uit database = " + member2.getUserName());
-//		assertThat(member1.getUserName()).isEqualTo(member2.getUserName());
-//	}
-//
-//	@Test
-//	public void findAndEditMemberTest() {
-//		Book book = new Book("Jack Kerouac", "On the Road");
-//		Set<Book> bookSet = new HashSet<>();
-//		bookSet.add(book);
-//		Member member1 = new Member("Niels", bookSet);
-//		MemberDaoService memberDaoService = new MemberDaoService();
-//
-//		memberDaoService.tempSaveBooks(bookSet);		//TODO vervangen door BookDaoService
-//		memberDaoService.save(member1);
-//		List<Member> members = memberDaoService.getMemberByUserName("Niels");
-//		Member member2 = members.get(0);
-//		member2.setUserName("Joris");
-//		memberDaoService.update(member2);
-//		members = memberDaoService.getMemberByUserName("Joris");
-//		Member member3 = members.get(0);
-//
-//		System.out.println("Username uit database = " + member3.getUserName());
-//		assertThat(member2.getUserName()).isEqualTo(member3.getUserName());
-//	}
-//
-//	@Test
-//	public void saveAndRemoveMemberTest() {
-//		Book book = new Book("Jack Kerouac", "On the Road");
-//		Set<Book> bookSet = new HashSet<>();
-//		bookSet.add(book);
-//		Member member1 = new Member("Niels", bookSet);
-//		MemberDaoService memberDaoService = new MemberDaoService();
-//
-//		memberDaoService.tempSaveBooks(bookSet);		//TODO vervangen door BookDaoService
-//		memberDaoService.save(member1);
-//		List<Member> members = memberDaoService.getMemberByUserName("Niels");
-//		Member member2 = members.get(0);
-//		memberDaoService.remove(member2);
-//		members = memberDaoService.getMemberByUserName("Niels");
-//
-//		assertThat(members.size()).isEqualTo(0);
-//	}
+	private MemberDaoService memberDaoService = new MemberDaoService();
+	
+	@Test
+	public void saveAndFindMemberTest() {
+		Member member1 = makeAndSaveNewBookAndMember();
+		
+		List<Member> members = memberDaoService.getMemberByUserName("Niels");
+		Member member2 = members.get(0);
+
+		//System.out.println("Username uit database = " + member2.getUserName());
+		assertThat(member1.getUserName()).isEqualTo(member2.getUserName());
+	}
+
+	@Test
+	public void findAndEditMemberTest() {
+		makeAndSaveNewBookAndMember();
+		
+		List<Member> members = memberDaoService.getMemberByUserName("Niels");
+		Member member2 = members.get(0);
+		member2.setUserName("Joris");
+		memberDaoService.update(member2);
+		members = memberDaoService.getMemberByUserName("Joris");
+		Member member3 = members.get(0);
+
+		//System.out.println("Username uit database = " + member3.getUserName());
+		assertThat(member2.getUserName()).isEqualTo(member3.getUserName());
+	}
+
+	@Test
+	public void saveAndRemoveMemberTest() {
+		makeAndSaveNewBookAndMember();
+		
+		List<Member> members = memberDaoService.getMemberByUserName("Niels");
+		Member member2 = members.get(0);
+		memberDaoService.remove(member2);
+		
+		NoResultException thrown = assertThrows(NoResultException.class, () -> {			//N.B. JUnit5 assertion, NIET jcore
+			List<Member> unfindableMember = memberDaoService.getMemberByUserName("Niels");
+		});
+	}
+	
+	@Test
+	public void getMemberByIdTest() {
+		Member member1 = makeAndSaveNewBookAndMember();
+		Member member2 = memberDaoService.getMemberById(member1.getId());
+		
+		assertThat(member1).isEqualTo(member2);
+	}
+	
+	@Test
+	public void getBooksOfMember() {
+		//TODO Implement
+	}
+	
+	private Member makeAndSaveNewBookAndMember() {
+		Book book = new Book("Jack Kerouac", "On the Road");
+		Set<Book> bookSet = new HashSet<>();
+		bookSet.add(book);
+		Member member1 = new Member("Niels", bookSet);
+		
+		memberDaoService.tempSaveBooks(bookSet);		//TODO vervangen door BookDaoService
+		memberDaoService.save(member1);
+		
+		return member1;
+	}
 }
