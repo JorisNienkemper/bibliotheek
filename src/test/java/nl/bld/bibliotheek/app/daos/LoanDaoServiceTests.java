@@ -35,6 +35,7 @@ public class LoanDaoServiceTests {
             em.persist(member1);
             em.persist(loan1);
             tx.commit();
+
             System.out.println("Loan successfully added.");
         } catch (Exception e){
             if (em != null){
@@ -119,7 +120,6 @@ public class LoanDaoServiceTests {
         assertThat(outcomeQueryAllLoans2.size()).isEqualTo(0);
         System.out.println("De database bevat voor verwijderen " + outcomeQueryAllLoans2.size() + " elementen.");
     }
-
 
 
 
