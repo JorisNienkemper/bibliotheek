@@ -27,6 +27,30 @@
             <property name="jakarta.persistence.sql-load-script-source" value="data.sql"/>
         </properties>
     </persistence-unit>
+
+    <persistence-unit name="bibliotheek-pu-test" transaction-type="RESOURCE_LOCAL">
+        <!-- The persistence unit is a consistent description of all the
+            relevant properties of the layers
+         that should be traversed to go from JPA to the database tables -->
+        <description>JPA Course</description>
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>
+            <property name="hibernate.dialect"
+                      value="org.hibernate.dialect.PostgresPlusDialect"/>
+            <property name="hibernate.generate_statistics" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="jakarta.persistence.jdbc.driver"
+                      value="org.postgresql.Driver"/>
+            <property name="jakarta.persistence.jdbc.url"
+                      value="jdbc:postgresql://localhost:5432/LibraryTest"/>
+            <property name="jakarta.persistence.jdbc.user" value="cursist"/>
+            <property name="jakarta.persistence.jdbc.password"
+                      value="PaSSw0rd"/>
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="jakarta.persistence.sql-load-script-source" value="data.sql"/>
+        </properties>
+    </persistence-unit>
 </persistence>
 
 <!--        drop-and-create-->

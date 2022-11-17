@@ -15,7 +15,7 @@ public interface BookDaoServiceContract {
 
     Book getBookById(Long id);
 
-    List<Book> getBooksByBookTitle(String Title);
+    List<Book> getBooksByBookTitle(String title);
 
     List<Book> getBooksByAuthorName(String authorName);
 }

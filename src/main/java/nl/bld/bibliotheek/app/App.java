@@ -21,6 +21,4 @@ public class App {
     private void run() {
         //start app from here
     }
-
-
 }
