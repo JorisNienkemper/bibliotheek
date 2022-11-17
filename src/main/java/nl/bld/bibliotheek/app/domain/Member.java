@@ -46,7 +46,7 @@ public class Member {
     public Member() {
     }
 
-    public void addBookToList(){
-        this.books = books;
+    public void addBookToList(Book book){
+        books.add(book);
     }
 }
