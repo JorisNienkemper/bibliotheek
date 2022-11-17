@@ -46,7 +46,6 @@ public class dummyBookDAoService implements BookDaoServiceContract {
         return books;
     }
 
-    @Override
     public List<Book> getAllBooks() {
         List<Book> books = new ArrayList<>();
         books.add(new Book ("Titel", "Jan", 2));
