@@ -6,8 +6,6 @@ import java.util.Scanner;
 
 public class MainMenuController {
 
-    private int inputGebruiker;
-
     public void choiceMenu() {
         MainMenuView mainMenuView = new MainMenuView();
         mainMenuView.showOptions();
@@ -15,14 +13,18 @@ public class MainMenuController {
         Scanner scanner = new Scanner(System.in);
         int userInput = scanner.nextInt();
 
-        switch (inputGebruiker) {
+        switch (userInput) {
             case 1:
                 //  klassenaam.loanController();
-
                 break;
             case 2:
                 //  klassenaam.adminController();
                 break;
+            case 3:
+                mainMenuView.exitMessage();
+                break;
         }
+
+
     }
 }

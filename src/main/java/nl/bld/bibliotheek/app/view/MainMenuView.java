@@ -10,8 +10,13 @@ public class MainMenuView {
                 |                                         |
                 | Option 1: Loan menu                     |
                 | Option 2: Admin menu                    |
+                | Option 3: Leave application             |
                 -------------------------------------------
                 Enter your number: """);
 
+    }
+
+    public void exitMessage() {
+        System.out.println("You're leaving the application.");
     }
 }
