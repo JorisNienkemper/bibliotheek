@@ -3,6 +3,7 @@ package nl.bld.bibliotheek.app.daos;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import nl.bld.bibliotheek.app.daos.BookDaoService;
 import nl.bld.bibliotheek.app.domain.Book;
 import org.junit.jupiter.api.*;
 
