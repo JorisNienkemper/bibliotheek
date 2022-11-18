@@ -39,8 +39,8 @@ public class Member {
     }
 
     public Member(String userName, Set<Book> books) {
-        this.userName = userName;
-        this.books = books;
+        setUserName(userName);
+        setBooks(books);
     }
 
     public Member() {

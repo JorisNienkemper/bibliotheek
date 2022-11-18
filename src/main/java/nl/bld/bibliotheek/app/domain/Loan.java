@@ -16,6 +16,11 @@ public class Loan {
     @ManyToOne
     private  Member member;
 
+    public Loan (Book book, Member member) {
+        setBook(book);
+        setMember(member);
+    }
+
     public Book getBook() {
         return book;
     }

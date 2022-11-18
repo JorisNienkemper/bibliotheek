@@ -1,10 +1,12 @@
 package nl.bld.bibliotheek.app.controller;
 
+import nl.bld.bibliotheek.app.daos.BookDao;
 import nl.bld.bibliotheek.app.daos.BookDaoServiceContract;
 import nl.bld.bibliotheek.app.daos.LoanDaoService;
 import nl.bld.bibliotheek.app.daos.LoanDaoServiceContract;
 import nl.bld.bibliotheek.app.domain.Book;
 import nl.bld.bibliotheek.app.domain.Loan;
+import nl.bld.bibliotheek.app.domain.Member;
 import nl.bld.bibliotheek.app.views.LoanOptionsView;
 
 import java.util.ArrayList;
@@ -15,9 +17,9 @@ public class LoanOptionController {
     Scanner scanner = new Scanner(System.in);
     LoanOptionsView view = new LoanOptionsView();
     LoanDaoServiceContract loanDao = new LoanDaoService();
-    BookDaoServiceContract bookDao = new BookDaoService();
+    BookDaoServiceContract bookDao = new BookDao();
 
-    public void switchMenu() {
+    public void switchMenu(Member member) {
 
         int menuChoice = 0;
 
@@ -31,7 +33,7 @@ public class LoanOptionController {
                         break;
                     // Check out book
                     case 2:
-                        checkOutBook();
+                        checkOutBook(member);
                         break;
                     // Check in book
                     case 3:
@@ -58,7 +60,7 @@ public class LoanOptionController {
 //        //view.printLibrary(books);
 //    }
 
-    public void checkOutBook() {
+    public void checkOutBook(Member member) {
         boolean checkOutAnother = true;
         List<Book> books = new ArrayList<>();
         List<Loan> loans = new ArrayList<>();
@@ -67,7 +69,8 @@ public class LoanOptionController {
             long serialNumber = scanner.nextLong();
             Book book = bookDao.getBookById(serialNumber);
             Loan loan = new Loan();
-            loan.setBook(book); // member ook nog toevoegen
+            loan.setBook(book);
+            loan.setMember(member);
 
             book.setBookQuantity(book.getBookQuantity() - 1);
 
@@ -95,8 +98,6 @@ public class LoanOptionController {
             System.out.println("Give the serial number (ID) of your book: ");
             long serialNumber = scanner.nextLong();
             Book book = bookDao.getBookById(serialNumber);
-
-
 
             book.setBookQuantity(book.getBookQuantity() + 1);
             //book.getLoan()
