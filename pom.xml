@@ -13,7 +13,7 @@
         <maven.compiler.target>18</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <latest.jdbc.postgres.driver>42.5.0</latest.jdbc.postgres.driver>
-        <latest.junit.version>5.9.0</latest.junit.version>
+        <latest.junit.version>5.9.1</latest.junit.version>
         <latest.assertj-core>3.22.0</latest.assertj-core>
         <latest.hibernate.version>6.1.4.Final</latest.hibernate.version>
         <latest.log4j.version>2.19.0</latest.log4j.version>
@@ -21,6 +21,7 @@
     </properties>
 
     <dependencies>
+<<<<<<< HEAD
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -52,6 +53,39 @@
             <artifactId>log4j-slf4j-impl</artifactId>
             <version>${latest.log4j.version}</version>
         </dependency>
+=======
+    <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>${latest.jdbc.postgres.driver}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <version>${latest.junit.version}</version>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.assertj</groupId>
+        <artifactId>assertj-core</artifactId>
+        <version>${latest.assertj-core}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.hibernate.orm</groupId>
+        <artifactId>hibernate-core</artifactId>
+        <version>${latest.hibernate.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.hibernate.orm</groupId>
+        <artifactId>hibernate-jpamodelgen</artifactId>
+        <version>6.1.4.Final</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-slf4j-impl</artifactId>
+        <version>${latest.log4j.version}</version>
+    </dependency>
+>>>>>>> f010cd84edd21090bfd72c4d4585c360b15910ae
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
             <artifactId>jakarta.xml.bind-api</artifactId>
