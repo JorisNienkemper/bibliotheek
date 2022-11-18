@@ -53,7 +53,7 @@ public class BookDaoService implements BookDaoServiceContract{
         return query.setParameter(1,authorName).getResultList();
     }
 
-    private void executeInsideTransaction(Consumer<EntityManager> action) {
+    void executeInsideTransaction(Consumer<EntityManager> action) {
         EntityTransaction tx = em.getTransaction();
         try {
             tx.begin();

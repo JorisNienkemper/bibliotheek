@@ -21,16 +21,16 @@ public class BookDaoServiceTests {
 
     @BeforeEach
     public void setUp() {
+        Book  book = new Book("A","B",3);
         em.getTransaction().begin();
-        em.persist(new Book("A","B",3));
+        em.persist(book);
         em.getTransaction().commit();
     }
 
     @Test
     @Order(1)
     public void getTests() {
-        long id = 1;
-        Optional<Book> book = bookDao.get(id);
+        Optional<Book> book = bookDao.get(1L);
         assertThat(book).isNotEmpty();
     }
 
@@ -42,7 +42,7 @@ public class BookDaoServiceTests {
     }
 
     @Test
-    @Order(3)
+    @Order(4)
     public void saveTests() {
         Book book = new Book("Z","Y",9);
         bookDao.save(book);
@@ -50,7 +50,7 @@ public class BookDaoServiceTests {
     }
 
     @Test
-    @Order(4)
+    @Order(5)
     public void updateTests() {
         Book book = bookDao.getBookById(1L);
         book.setBookQuantity(8);
@@ -59,7 +59,7 @@ public class BookDaoServiceTests {
     }
 
     @Test
-    @Order(8)
+    @Order(9)
     public void removeTests() {
         Book book = bookDao.getBookById(1L);
         bookDao.remove(book);
@@ -67,23 +67,32 @@ public class BookDaoServiceTests {
     }
 
     @Test
-    @Order(5)
+    @Order(6)
     public void getBookByIdTests() {
         Book book = bookDao.getBookById(1L);
         assertThat(book.getSerialNumber()).isEqualTo(1L);
     }
 
     @Test
-    @Order(6)
+    @Order(7)
     public void getBooksByNameTests() {
         List<Book> books = bookDao.getBooksByBookTitle("A");
         assertThat(books.get(0).getBookTitle()).isEqualTo("A");
     }
 
     @Test
-    @Order(7)
+    @Order(8)
     public void getBooksByAuthorName() {
         List<Book> books = bookDao.getBooksByAuthorName("B");
         assertThat(books.get(0).getAuthorName()).isEqualTo("B");
+    }
+
+    @Test
+    @Order(3)
+    public void executeInsideTransactionTests() {
+        Book book = new Book("","",0);
+        bookDao.executeInsideTransaction(entityManager -> em.persist(book));
+        Book bookTest = em.find(Book.class,2L);
+        assertThat(bookTest.getAuthorName()).isEqualTo("");
     }
 }
