@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-public class BookDao implements BookDaoServiceContract{
+public class BookDaoService implements BookDaoServiceContract{
 
     private final EntityManagerFactory emf  = Persistence.createEntityManagerFactory("bibliotheek-pu-test");
     private final EntityManager em = emf.createEntityManager();
@@ -53,7 +53,7 @@ public class BookDao implements BookDaoServiceContract{
         return query.setParameter(1,authorName).getResultList();
     }
 
-    private void executeInsideTransaction(Consumer<EntityManager> action) {
+    void executeInsideTransaction(Consumer<EntityManager> action) {
         EntityTransaction tx = em.getTransaction();
         try {
             tx.begin();

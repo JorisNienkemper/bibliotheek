@@ -1,6 +1,6 @@
 package nl.bld.bibliotheek.app.controller;
 
-import nl.bld.bibliotheek.app.daos.BookDao;
+import nl.bld.bibliotheek.app.daos.BookDaoService;
 import nl.bld.bibliotheek.app.daos.BookDaoServiceContract;
 import nl.bld.bibliotheek.app.daos.LoanDaoService;
 import nl.bld.bibliotheek.app.daos.LoanDaoServiceContract;
@@ -17,7 +17,7 @@ public class LoanOptionController {
     Scanner scanner = new Scanner(System.in);
     LoanOptionsView view = new LoanOptionsView();
     LoanDaoServiceContract loanDao = new LoanDaoService();
-    BookDaoServiceContract bookDao = new BookDao();
+    BookDaoServiceContract bookDao = new BookDaoService();
 
     public void switchMenu(Member member) {
 

@@ -33,7 +33,8 @@
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/LibraryTest"/>
             <property name="jakarta.persistence.jdbc.user" value="cursist"/>
             <property name="jakarta.persistence.jdbc.password" value="PaSSw0rd"/>
-            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>g
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="jakarta.persistence.sql-load-script-source" value="data.sql"/>
         </properties>
     </persistence-unit>
 </persistence>
