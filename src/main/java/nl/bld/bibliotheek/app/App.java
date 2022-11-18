@@ -2,6 +2,7 @@ package nl.bld.bibliotheek.app;
 
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import nl.bld.bibliotheek.app.controller.MainMenuController;
 
 public class App {
 
@@ -19,7 +20,8 @@ public class App {
     }
 
     private void run() {
-        //start app from here
+        MainMenuController mainMenuController = new MainMenuController();
+        mainMenuController.choiceMenu();
     }
 
 

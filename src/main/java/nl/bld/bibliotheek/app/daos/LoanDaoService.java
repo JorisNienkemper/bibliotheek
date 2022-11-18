@@ -6,10 +6,11 @@ import nl.bld.bibliotheek.app.domain.Loan;
 
 public class LoanDaoService implements LoanDaoServiceContract{
 
-    //Dit moet nog gebeuren. emf in deze class laden.
-    App app = new App();
-    private EntityManager em = emf.createEntityManager();
-    private EntityTransaction tx;
+    //TODO verwijderen nadat geimplementeerd
+    String persistenceUnitName = "bibliotheek-pu";
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory(persistenceUnitName);
+    EntityManager em = emf.createEntityManager();
+    EntityTransaction tx = em.getTransaction();
 
     @Override
     public void save(Loan loan) {
@@ -33,7 +34,7 @@ public class LoanDaoService implements LoanDaoServiceContract{
 
     }
 
-    //Nog niet kunnen testen of deze werkt.
+    //Nog niet kunnen testen of deze goed werkt. Test moet nog aangepast worden.
     @Override
     public void remove(Loan loan) {
         try {
