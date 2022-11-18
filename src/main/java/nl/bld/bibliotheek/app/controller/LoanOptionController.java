@@ -1,5 +1,6 @@
 package nl.bld.bibliotheek.app.controller;
 
+import nl.bld.bibliotheek.app.daos.BookDaoService;
 import nl.bld.bibliotheek.app.daos.BookDaoServiceContract;
 import nl.bld.bibliotheek.app.daos.LoanDaoService;
 import nl.bld.bibliotheek.app.daos.LoanDaoServiceContract;

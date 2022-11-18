@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-public class BookDao implements BookDaoServiceContract{
+public class BookDaoService implements BookDaoServiceContract{
 
     private final EntityManagerFactory emf  = Persistence.createEntityManagerFactory("bibliotheek-pu-test");
     private final EntityManager em = emf.createEntityManager();

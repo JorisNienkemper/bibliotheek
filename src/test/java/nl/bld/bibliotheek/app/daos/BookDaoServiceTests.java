@@ -12,11 +12,11 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class BookDaoTests {
+public class BookDaoServiceTests {
     private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("bibliotheek-pu-test");
     private final EntityManager em = emf.createEntityManager();
 
-    private final BookDao bookDao = new BookDao();
+    private final BookDaoService bookDao = new BookDaoService();
 
     @BeforeEach
     public void setUp() {
