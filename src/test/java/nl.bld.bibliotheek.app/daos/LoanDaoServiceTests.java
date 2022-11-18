@@ -21,9 +21,7 @@ public class LoanDaoServiceTests {
             //Arrange
             Book book1 = new Book("Boek1", "Schrijver1", 1);
             Member member1 = new Member();
-            Loan loan1 = new Loan();
-            loan1.setBook(book1);
-            loan1.setMember(member1);
+            Loan loan1 = new Loan(book1, member1);
 
             //Act
             try {

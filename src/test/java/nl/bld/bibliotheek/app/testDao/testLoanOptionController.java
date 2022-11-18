@@ -2,6 +2,7 @@ package nl.bld.bibliotheek.app.testDao;
 
 import nl.bld.bibliotheek.app.domain.Book;
 import nl.bld.bibliotheek.app.domain.Loan;
+import nl.bld.bibliotheek.app.domain.Member;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,6 +18,7 @@ public class testLoanOptionController {
     dummyLeningDaoService leningDao = new dummyLeningDaoService();
     //    innerClassView view = new innerClassView();
     Scanner scanner = new Scanner(System.in);
+    Member member = new Member();
 
     @Test
     @DisplayName("test checkout book")
@@ -34,8 +36,8 @@ public class testLoanOptionController {
             System.out.println("Give the serial number (ID) of your book: ");
             long serialNumber = scanner.nextLong();
             book = bookDao.getBookById(serialNumber);
-            Loan loan = new Loan();
-            loan.setBook(book); // member ook nog toevoegen
+            Loan loan = new Loan(book, member);
+
             oldBookQuantity = book.getBookQuantity();
             book.setBookQuantity(book.getBookQuantity() - 1);
             newbookQuantity = book.getBookQuantity();

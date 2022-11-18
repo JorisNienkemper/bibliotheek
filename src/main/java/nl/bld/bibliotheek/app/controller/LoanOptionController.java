@@ -68,9 +68,7 @@ public class LoanOptionController {
             System.out.println("Give the serial number (ID) of your book: ");
             long serialNumber = scanner.nextLong();
             Book book = bookDao.getBookById(serialNumber);
-            Loan loan = new Loan();
-            loan.setBook(book);
-            loan.setMember(member);
+            Loan loan = new Loan(book, member);
 
             book.setBookQuantity(book.getBookQuantity() - 1);
 
